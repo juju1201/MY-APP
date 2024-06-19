@@ -1,10 +1,9 @@
 import React from 'react';
-import logo from '../Assets/Logo.svg';
 
 function Nav() {
   return (
     <nav>
-      <img src='{logo}' alt='Little Lemon Logo'/>
+      <img src='{Logo}' alt='Little Lemon Logo'/>
       <ul>
         <li><a href="/home">Home</a></li>
         <li><a href="/about">About</a></li>

@@ -1,12 +1,10 @@
 import React from 'react';
-import logo from '../Assets/Logo.svg';
 
 function Footer() {
+  const imagePath = '../Assets/logo.png';
   return (
     <footer>
-    <div>
-    <img src='{logo}' alt='Little Lemon Logo'/>
-    </div>
+    <img src= '{require(\ "./logo.png")}' alt='Little Lemon Logo'/>
      <ul>
         <h1>Doormat Navigation</h1>
         <li><a href="/home">Home</a></li>
