@@ -1,10 +1,11 @@
 import React from 'react';
+import logo from '../Componets/Assets/logofooter.jpg';
+import '../Styles/FooterStyles.css';
 
 function Footer() {
-  const imagePath = '../Assets/logo.png';
   return (
     <footer>
-    <img src= '{require(\ "./logo.png")}' alt='Little Lemon Logo'/>
+      <img src={logo} alt='littlelemon logo'/>
      <ul>
         <h1>Doormat Navigation</h1>
         <li><a href="/home">Home</a></li>
