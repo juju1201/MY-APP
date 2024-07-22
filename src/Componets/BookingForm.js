@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for programmatic navigation
 
-
-const BookingForm = ({ availableTimes = [], dispatch }) => {
+const BookingForm = () => {
   const [formData, setFormData] = useState({
     date: '',
-    time: '17:00',
+    time: '',
     guests: '',
     occasion: ''
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -15,21 +17,29 @@ const BookingForm = ({ availableTimes = [], dispatch }) => {
       ...formData,
       [name]: value
     });
-
-    if (name === 'date') {
-      dispatch({ type: 'UPDATE_TIMES', date: value });
-    }
   };
 
-  const handleSubmit = (e) => {
+  const submitForm = async (e) => {
     e.preventDefault();
-    console.log('Form Data:', formData);
+    try {
+      const success = await window.submitAPI(formData); // Assuming submitAPI is defined in global scope
+      if (success) {
+        navigate('/confirmation'); // Navigate to the booking confirmation page
+      } else {
+        console.log('Booking submission failed.');
+        // Handle case where submission fails (optional)
+      }
+    } catch (error) {
+      console.error('Error submitting booking:', error);
+      // Handle network errors or other exceptions (optional)
+    }
   };
 
   return (
     <div>
       <h1>Booking Form</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={submitForm}>
+        {/* Date input */}
         <label>
           Date:
           <input
@@ -40,20 +50,20 @@ const BookingForm = ({ availableTimes = [], dispatch }) => {
           />
         </label>
         <br />
+
+        {/* Time input */}
         <label>
           Time:
-          <select
+          <input
+            type="time"
             name="time"
             value={formData.time}
             onChange={handleChange}
-          >
-            <option value="">Select a time</option>
-            {availableTimes.map((time, index) => (
-              <option key={index} value={time}>{time}</option>
-            ))}
-          </select>
+          />
         </label>
         <br />
+
+        {/* Guests input */}
         <label>
           Number of Guests:
           <input
@@ -64,19 +74,20 @@ const BookingForm = ({ availableTimes = [], dispatch }) => {
           />
         </label>
         <br />
+
+        {/* Occasion input */}
         <label>
           Occasion:
-          <select
+          <input
+            type="text"
             name="occasion"
             value={formData.occasion}
             onChange={handleChange}
-          >
-            <option value="">Select an occasion</option>
-            <option value="Birthday">Birthday</option>
-            <option value="Anniversary">Anniversary</option>
-          </select>
+          />
         </label>
         <br />
+
+        {/* Submit button */}
         <button type="submit">Submit Reservation</button>
       </form>
     </div>

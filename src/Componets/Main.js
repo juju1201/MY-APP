@@ -1,11 +1,10 @@
-import React from 'react';
+
 import '../Styles/MainStyles.css';
 import { Link } from 'react-router-dom';
 import img1 from '../Componets/Assets/restaurant chef B.jpg';
 import dish1 from '../Componets/Assets/greek salad.jpg';
 import dish2 from '../Componets/Assets/lemon dessert.jpg';
 import dish3 from '../Componets/Assets/transferir.jpg';
-
 
 
 function Main() {

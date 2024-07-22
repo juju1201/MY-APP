@@ -6,6 +6,7 @@ import Main from './Componets/Main';
 import Nav from './Componets/Nav';
 import Footer from './Componets/Footer';
 import BookingForm from './Componets/BookingForm';
+import ConfirmedBooking from './Componets/ConfirmedBooking';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
     <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/booking" element={<BookingForm />} />
+        <Route path="/confirmation" element={<ConfirmedBooking />} />
       </Routes>
     <Footer />
   </Router>
